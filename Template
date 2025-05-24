@@ -1,0 +1,9 @@
+import numpy as np
+import pandas as pd
+import time 
+from colorama import Back,Fore,Style
+
+data_frame = pd.read_csv(r'sayisalloto.csv')
+
+for lens in range(len(data_frame.values)):
+    print(data_frame.values[lens])   
