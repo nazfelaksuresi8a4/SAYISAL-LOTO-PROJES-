@@ -1,9 +1,19 @@
-import numpy as np
-import pandas as pd
-import time 
-from colorama import Back,Fore,Style
+import pandas as _pd
+import datetime as _dt
+import time as _t
+import os as _o
 
-data_frame = pd.read_csv(r'sayisalloto.csv')
+class Choose:
+    def choose_function():
+        data_frame = _pd.read_csv(r'sayisalloto.csv')
 
-for lens in range(len(data_frame.values)):
-    print(data_frame.values[lens])   
+        choose_input = input(f'1-Bütün çekiliş listesi(ARŞİV)\n2-En çok çıkan sayılar\n3-Tahmin al\n4-Tek-çift oranı\n5-Tek-çift dağılımı\n6-Asal sayılar çok çıkanlar\n{len('Asal sayılar en çok çıkanlar')*'-'}\n$>> ')
+        
+        try:
+            return int(choose_input)   
+        except:
+            _o.system('cls')
+            Choose.choose_function()
+
+
+Choose.choose_function()
