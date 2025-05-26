@@ -2,18 +2,59 @@ import pandas as _pd
 import datetime as _dt
 import time as _t
 import os as _o
+import colorama
+from colorama import Back,Fore,Style
 
-class Choose:
+choose_data = []
+
+class Choose():
     def choose_function():
+        colorama.init() 
+        
         data_frame = _pd.read_csv(r'sayisalloto.csv')
+
+        print(Fore.GREEN,Style.BRIGHT)
 
         choose_input = input(f'1-Bütün çekiliş listesi(ARŞİV)\n2-En çok çıkan sayılar\n3-Tahmin al\n4-Tek-çift oranı\n5-Tek-çift dağılımı\n6-Asal sayılar çok çıkanlar\n{len('Asal sayılar en çok çıkanlar')*'-'}\n$>> ')
         
+        print(Fore.RESET,Style.RESET_ALL)
+
         try:
+            choose_data.append(int(choose_input))
+            
+            Cli_side()
+
             return int(choose_input)   
+            
         except:
             _o.system('cls')
             Choose.choose_function()
 
+class Cli_side():
+    def __init__(self):
+        self.user_choose = choose_data.pop()
+
+        if self.user_choose == 1:
+            print('1')
+        
+        elif self.user_choose == 2:
+            print('2')
+
+        elif self.user_choose == 3:
+            print('3')
+
+        elif self.user_choose == 4:
+            print('4')
+        
+        elif self.user_choose == 5:
+            print('5')
+
+        elif self.user_choose == 6:
+            print('6')
+
 
 Choose.choose_function()
+        
+    
+    
+
