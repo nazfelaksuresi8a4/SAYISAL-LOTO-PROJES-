@@ -1,28 +1,64 @@
-import pandas as _pd
-import datetime as _dt
-import time as _t
-import os as _o
+#https://www.lotobil.com/Sayisal-Loto-Butun-Sonuc-Listesi#
+
+#/storage/emulated/0/Download/sayisalloto.csv
+
 import colorama
+from time import time,sleep
 from colorama import Back,Fore,Style
+import numpy as np
+import pandas as pd
+import os as _o
 
 choose_data = []
+year_arr = []
+columns = ["tarih","hft","b","c","d","e","f","h","durum"]
 
+#b-g#
+
+data_frame = pd.read_csv(r"/storage/emulated/0/Download/sayisalloto.csv")
+
+def all_datas():
+	choose_option = input("\n\nHangi yilin verilerini istersiniz?\n\n>> ")
+            
+            
+            
+	for data_index in range(len(data_frame.values)):
+		
+		if str(data_frame.values[data_index][0]).startswith(choose_option):
+			year_arr.append(data_frame.values[data_index])
+				
+	try:		
+		return(Fore.RED,Style.DIM,pd.DataFrame(data=year_arr,columns=(columns[f] for f in range(len(data_frame.columns)))))
+		
+				#nonerror hashhes#
+	except Exception as maths_except:
+		print(f"bir hata olustu\n\nHATA: {maths_except}")
+
+	try:
+		_o.system("clear")
+		all_datas()
+	except:
+		_o.system("cls")
+		all_datas()		
+            		
 class Choose():
     def choose_function():
         colorama.init() 
-        
-        data_frame = _pd.read_csv(r'sayisalloto.csv')
 
         print(Fore.GREEN,Style.BRIGHT)
 
         choose_input = input(f'1-Bütün çekiliş listesi(ARŞİV)\n2-En çok çıkan sayılar\n3-Tahmin al\n4-Tek-çift oranı\n5-Tek-çift dağılımı\n6-Asal sayılar çok çıkanlar\n{len('Asal sayılar en çok çıkanlar')*'-'}\n$>> ')
         
         print(Fore.RESET,Style.RESET_ALL)
-
         try:
-            choose_data.append(int(choose_input))
-            
-            Cli_side()
+       	 choose_data.append(int(choose_input))
+       	 
+        except:
+        	_o.system("clear")
+        	Choose.choose_function()
+        	
+        Cli_side()
+        try:
 
             return int(choose_input)   
             
@@ -32,10 +68,13 @@ class Choose():
 
 class Cli_side():
     def __init__(self):
+        year_arr.clear()
+        
         self.user_choose = choose_data.pop()
+        print("Eger tum verileri gormek isterseniz 101 sayisini tuslayin...")
 
         if self.user_choose == 1:
-            print('1')
+        	print(all_datas())		      		
         
         elif self.user_choose == 2:
             print('2')
