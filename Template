@@ -8,6 +8,7 @@ from colorama import Back,Fore,Style
 import numpy as np
 import pandas as pd
 import os as _o
+import sys as _s
 
 choose_data = []
 year_arr = []
@@ -19,6 +20,9 @@ data_frame = pd.read_csv(r"C:\Users\alper\Desktop\Top secret game\sayisalloto.cs
 
 class data_struct():
     def all_datas():
+        
+        year_arr.clear()
+
         print(Fore.LIGHTRED_EX,Style.BRIGHT)
 
         choose_option = input("\n\nHangi yilin verilerini istersiniz?\n\n>> ") 
@@ -41,6 +45,33 @@ class data_struct():
                     new_struct_unix = data_struct.all_datas()
 
                     print(new_struct_unix)
+
+                finally:
+
+                    action_choose = int(input('\n\n1-ÇIK\n2-BAŞA DÖN\n3-TEKRAR BAŞLAT\n\n$>> '))
+
+                    if(action_choose == 1):
+                        try:
+                            _o.system('cls')
+                        except:
+                            _o.system('clear')
+                        finally:
+                            _s.exit()
+
+                    elif(action_choose == 2):
+                        try:
+                            _o.system('cls')
+                        except:
+                            _o.system('clear')
+                        finally:
+                            data_struct.all_datas()
+                    elif(action_choose == 3):
+                        try:
+                            _o.system('cls')
+                        except:
+                            _o.system('clear')
+                        finally:
+                            Choose.choose_function()
 
         if choose_option.startswith(' ') or choose_option == ' ' or choose_option == '':
 
@@ -69,6 +100,7 @@ class data_struct():
             _o.system("cls")
             data_struct.all_datas()	
             print(Fore.RESET,Style.RESET_ALL)	
+
          
 class Choose():
     def choose_function():
@@ -79,9 +111,11 @@ class Choose():
         choose_input = input(f'1-Bütün çekiliş listesi(ARŞİV)\n2-En çok çıkan sayılar\n3-Tahmin al\n4-Tek-çift oranı\n5-Tek-çift dağılımı\n6-Asal sayılar çok çıkanlar\n{len('Asal sayılar en çok çıkanlar')*'-'}\n$>> ')
         
         print(Fore.RESET,Style.RESET_ALL)
+
         try:
             choose_data.append(int(choose_input))
-       	 
+
+            print(choose_data)
         except:
             _o.system("clear")
             Choose.choose_function()
@@ -97,13 +131,40 @@ class Choose():
 
 class Cli_side():
     def __init__(self):
-        year_arr.clear()
-
+            
         self.user_choose = choose_data.pop()
+
         print("Eger tum verileri gormek isterseniz 101 sayisini tuslayin...")
 
         if self.user_choose == 1:
-            print(data_struct.all_datas())		      		
+            try:
+                print(data_struct.all_datas())	
+            except:
+                pass
+            finally:
+                action_choose_zero = int(input('\n\n1-ÇIK\n2-BAŞA DÖN\n3-TEKRAR BAŞLAT\n\n$>> '))
+
+                if(action_choose_zero == 1):
+                    try:
+                        _o.system('cls')
+                    except:
+                        _o.system('clear')
+                    finally:
+                        _s.exit()
+
+                elif(action_choose_zero == 2):
+                    try:
+                        _o.system('cls')
+                    except:
+                        _o.system('clear')
+
+                elif(action_choose_zero == 3):
+                    try:
+                        _o.system('cls')
+                    except:
+                        _o.system('clear')
+                    finally:
+                        Choose.choose_function()
         
         elif self.user_choose == 2:
             print('2')
