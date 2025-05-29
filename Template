@@ -3,7 +3,7 @@
 #/storage/emulated/0/Download/sayisalloto.csv
 
 import colorama
-from time import time,sleep
+import time as _t
 from colorama import Back,Fore,Style
 import numpy as np
 import pandas as pd
@@ -11,36 +11,65 @@ import os as _o
 
 choose_data = []
 year_arr = []
-columns = ["tarih","hft","b","c","d","e","f","h","durum"]
+columns = ["tarih:","no:","S1","S2","S3","S4","S5","S6","  durum:"]
 
 #b-g#
 
-data_frame = pd.read_csv(r"/storage/emulated/0/Download/sayisalloto.csv")
+data_frame = pd.read_csv(r"C:\Users\alper\Desktop\Top secret game\sayisalloto.csv")
 
-def all_datas():
-	choose_option = input("\n\nHangi yilin verilerini istersiniz?\n\n>> ")
-            
-            
-            
-	for data_index in range(len(data_frame.values)):
-		
-		if str(data_frame.values[data_index][0]).startswith(choose_option):
-			year_arr.append(data_frame.values[data_index])
-				
-	try:		
-		return(Fore.RED,Style.DIM,pd.DataFrame(data=year_arr,columns=(columns[f] for f in range(len(data_frame.columns)))))
-		
-				#nonerror hashhes#
-	except Exception as maths_except:
-		print(f"bir hata olustu\n\nHATA: {maths_except}")
+class data_struct():
+    def all_datas():
+        print(Fore.LIGHTRED_EX,Style.BRIGHT)
 
-	try:
-		_o.system("clear")
-		all_datas()
-	except:
-		_o.system("cls")
-		all_datas()		
-            		
+        choose_option = input("\n\nHangi yilin verilerini istersiniz?\n\n>> ") 
+
+        def recursive():
+            if choose_option.startswith(' ') or choose_option == ' ' or choose_option == '':
+
+                try:
+                    print('BU ALAN BOŞ KALAMAZ')
+                    _t.sleep(0.5)
+                    _o.system('cls')
+                    new_struct_win = data_struct.all_datas()
+
+                    print(new_struct_win)
+                
+                except:
+                    print('BU ALAN BOŞ KALAMAZ')
+                    _t.sleep(0.5)
+                    _o.system('cls')
+                    new_struct_unix = data_struct.all_datas()
+
+                    print(new_struct_unix)
+
+        if choose_option.startswith(' ') or choose_option == ' ' or choose_option == '':
+
+            recursive()
+
+            return 0
+
+        for data_index in range(len(data_frame.values)):
+
+            if str(data_frame.values[data_index][0]).startswith(choose_option):
+                year_arr.append(data_frame.values[data_index])
+                    
+        try:		
+            print(Fore.RESET,Style.RESET_ALL)
+
+            return(pd.DataFrame(data=year_arr,columns=(columns[f] for f in range(len(data_frame.columns)))))
+                    #nonerror hashhes#
+        except Exception as maths_except:
+            print(f"bir hata olustu\n\nHATA: {maths_except}")
+            print(Fore.RESET,Style.RESET_ALL)
+        try:
+            _o.system("clear")
+            data_struct.all_datas()
+            print(Fore.RESET,Style.RESET_ALL)
+        except:
+            _o.system("cls")
+            data_struct.all_datas()	
+            print(Fore.RESET,Style.RESET_ALL)	
+         
 class Choose():
     def choose_function():
         colorama.init() 
@@ -51,11 +80,11 @@ class Choose():
         
         print(Fore.RESET,Style.RESET_ALL)
         try:
-       	 choose_data.append(int(choose_input))
+            choose_data.append(int(choose_input))
        	 
         except:
-        	_o.system("clear")
-        	Choose.choose_function()
+            _o.system("clear")
+            Choose.choose_function()
         	
         Cli_side()
         try:
@@ -69,12 +98,12 @@ class Choose():
 class Cli_side():
     def __init__(self):
         year_arr.clear()
-        
+
         self.user_choose = choose_data.pop()
         print("Eger tum verileri gormek isterseniz 101 sayisini tuslayin...")
 
         if self.user_choose == 1:
-        	print(all_datas())		      		
+            print(data_struct.all_datas())		      		
         
         elif self.user_choose == 2:
             print('2')
@@ -96,4 +125,3 @@ Choose.choose_function()
         
     
     
-
