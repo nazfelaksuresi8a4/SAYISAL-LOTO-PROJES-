@@ -16,6 +16,26 @@ columns = ["tarih:","no:","S1","S2","S3","S4","S5","S6","  durum:"]
 
 #b-g#
 
+def quest_device():
+    change_os = input('Cihazınızı seçin:\n\n0-Pc\n1-Mobil\n\n$> ')
+
+    return change_os
+
+device_info = quest_device()
+
+if(device_info.isdigit()):
+
+    if(int(device_info) == 0):
+
+        _o.system('cls')
+
+    elif(int(device_info) == 1):
+
+        _o.system('clear')
+
+
+
+
 data_frame = pd.read_csv(r"C:\Users\alper\Desktop\Top secret game\sayisalloto.csv")
 
 class data_struct():
@@ -31,20 +51,22 @@ class data_struct():
             if choose_option.startswith(' ') or choose_option == ' ' or choose_option == '':
 
                 try:
-                    print('BU ALAN BOŞ KALAMAZ')
-                    _t.sleep(0.5)
-                    _o.system('cls')
-                    new_struct_win = data_struct.all_datas()
+                    if int(device_info) == 0:
+                        print('BU ALAN BOŞ KALAMAZ')
+                        _t.sleep(0.5)
+                        _o.system('cls')
+                        new_struct_win = data_struct.all_datas()
 
-                    print(new_struct_win)
+                        print(new_struct_win)
                 
                 except:
-                    print('BU ALAN BOŞ KALAMAZ')
-                    _t.sleep(0.5)
-                    _o.system('cls')
-                    new_struct_unix = data_struct.all_datas()
+                    if int(device_info) == 1:
+                        print('BU ALAN BOŞ KALAMAZ')
+                        _t.sleep(0.5)
+                        _o.system('cls')
+                        new_struct_unix = data_struct.all_datas()
 
-                    print(new_struct_unix)
+                        print(new_struct_unix)
 
                 finally:
 
@@ -52,24 +74,30 @@ class data_struct():
 
                     if(action_choose == 1):
                         try:
-                            _o.system('cls')
+                            if int(device_info) == 0:
+                                _o.system('cls')
                         except:
-                            _o.system('clear')
+                            if int(device_info) == 1:
+                                _o.system('clear')
                         finally:
                             _s.exit()
 
                     elif(action_choose == 2):
                         try:
-                            _o.system('cls')
+                            if int(device_info) == 0:
+                                _o.system('cls')
                         except:
-                            _o.system('clear')
+                            if int(device_info) == 1:
+                                _o.system('clear')
                         finally:
                             data_struct.all_datas()
                     elif(action_choose == 3):
                         try:
-                            _o.system('cls')
+                            if int(device_info) == 0:
+                                _o.system('cls')
                         except:
-                            _o.system('clear')
+                            if int(device_info) == 1:
+                                _o.system('clear')
                         finally:
                             Choose.choose_function()
 
@@ -93,13 +121,16 @@ class data_struct():
             print(f"bir hata olustu\n\nHATA: {maths_except}")
             print(Fore.RESET,Style.RESET_ALL)
         try:
-            _o.system("clear")
-            data_struct.all_datas()
-            print(Fore.RESET,Style.RESET_ALL)
+            if int(device_info) == 0:
+                _o.system("clear")
+                data_struct.all_datas()
+                print(Fore.RESET,Style.RESET_ALL)
+
         except:
-            _o.system("cls")
-            data_struct.all_datas()	
-            print(Fore.RESET,Style.RESET_ALL)	
+            if int(device_info) == 1:
+                _o.system("cls")
+                data_struct.all_datas()	
+                print(Fore.RESET,Style.RESET_ALL)	
 
          
 class Choose():
@@ -145,24 +176,28 @@ class Cli_side():
                 action_choose_zero = int(input('\n\n1-ÇIK\n2-BAŞA DÖN\n3-TEKRAR BAŞLAT\n\n$>> '))
 
                 if(action_choose_zero == 1):
-                    try:
+                    if int(device_info) == 0:
                         _o.system('cls')
-                    except:
-                        _o.system('clear')
-                    finally:
-                        _s.exit()
+                    if int(device_info) == 1:   
+                        _o.system('clear') 
 
-                elif(action_choose_zero == 2):
-                    try:
+
+                if(action_choose_zero == 2):
+                    if int(device_info) == 0:
                         _o.system('cls')
-                    except:
+                    if int(device_info) == 1:
                         _o.system('clear')
 
-                elif(action_choose_zero == 3):
+                if(action_choose_zero == 3):
                     try:
-                        _o.system('cls')
+                        if int(device_info) == 0:
+                            _o.system('cls')
+                        if int(device_info) == 1:
+                            _o.system('clear')
+
                     except:
-                        _o.system('clear')
+                        pass ##empty##
+
                     finally:
                         Choose.choose_function()
         
