@@ -162,7 +162,8 @@ class Choose():
 
 class Cli_side():
     def __init__(self):
-            
+        #ALTTAKİ OROSPUNUN EVLADI VARYA O SONUNDA .pop OLAN CİBİLİYETİNE KAYDIĞIM HEH İŞTE ONU DÜZELTECEN PATLICAN KAFALI BİR KULLANICI ÇIKIP SİSTEM İNPUTUNU BOŞ VERİRSE KOD PATLIYOR AMK
+
         self.user_choose = choose_data.pop()
 
         print("Eger tum verileri gormek isterseniz 101 sayisini tuslayin...")
@@ -202,7 +203,34 @@ class Cli_side():
                         Choose.choose_function()
         
         elif self.user_choose == 2:
-            print('2')
+            @staticmethod
+            def quest_year():
+                year_input = input('Hangi yıla ait sayı analizi istersiniz??\n\n>> ')
+
+                return_index = 0
+
+                try:
+                    f = float(year_input)
+
+                    if f.is_integer():
+                        return_index = 1
+
+                    else:
+                        pass
+
+                except:
+                    return False
+                
+                finally:
+                    if return_index == 0:
+                        return False
+                    
+                    elif return_index == 1:
+                        return True
+                    
+            print(quest_year())
+
+                
 
         elif self.user_choose == 3:
             print('3')
