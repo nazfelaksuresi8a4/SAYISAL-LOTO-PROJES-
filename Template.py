@@ -226,11 +226,39 @@ class Cli_side():
                         return False
                     
                     elif return_index == 1:
-                        return True
-                    
-            print(quest_year())
+                        return int(year_input)
 
+            year = quest_year()
+            
+            real_count_data = []
+            value_data = []
+            value_count_data = []
+
+            if year == False:
+
+                if int(device_info) == 0:
+                    _o.system('cls')
+                    quest_year()
                 
+                elif int(device_info) == 1:
+                    _o.system('clear')
+                    quest_year()
+
+            else:
+                for data_indexes in range(len(data_frame)):
+                    value_data.append(data_frame.values[data_indexes][2:7])
+                
+                for matris_length in range(len(value_data)):
+                    for vals in range(len(value_data[matris_length])):       
+                        value_count_data.append(value_data[matris_length])
+                    
+
+                for x in range(len(value_count_data)):
+                    for meta_value in range(len(value_count_data[x])):
+                        real_count_data.append(value_count_data[x][meta_value])
+                
+                print(real_count_data)
+                 
 
         elif self.user_choose == 3:
             print('3')
