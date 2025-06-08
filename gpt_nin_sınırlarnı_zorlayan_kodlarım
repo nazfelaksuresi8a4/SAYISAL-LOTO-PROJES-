@@ -8,8 +8,6 @@ cols = 10
 data = np.random.rand(rows, cols)
 columns = ['A_' + str(i) for i in range(cols)]
 df = pd.DataFrame(data, columns=columns)
-
-# 2. Her kolona saçma işlemler zinciri uygula
 for col in df.columns:
     df[col] = np.where(df[col] > 0.5, df[col] * np.pi / 3.14 * 3.14159, df[col])
     df[col] = np.where(df[col] < 1, np.sin(df[col]) + np.cos(df[col]) - np.tan(df[col]), df[col])
@@ -17,38 +15,28 @@ for col in df.columns:
     df[col] = df[col] + df[col].rolling(window=5, min_periods=1).mean()
     df[col] = df[col].fillna(df[col].mean())
 
-# 3. Yeni kolonları daha hızlı türet
 row_sum = df.sum(axis=1)
 row_mean = df.mean(axis=1)
 row_std = df.std(axis=1).replace(0, 1e-6)
-
-for i in range(3):  # Daha az kolon
+for i in range(3): 
     df[f'NEW_COL_{i}'] = row_sum * row_mean / row_std
-
-# 4. Kümülatif fonksiyonlar
 df['cumsum_total'] = row_sum.cumsum()
 df['cumprod_total'] = row_sum.cumprod()
 df['expanding_mean'] = row_sum.expanding().mean()
 df['rolling_sum'] = row_sum.rolling(window=50, min_periods=1).sum()
-
-# 5. Gruplama işlemleri
 df['group'] = np.random.choice(['A', 'B', 'C', 'D'], size=len(df))
 grouped = df.groupby('group').agg(['mean', 'std', 'min', 'max', 'median'])
-
-# 6. Pivot ve stack işlemleri
 pivoted = df.pivot_table(index='group', values='NEW_COL_0', aggfunc='mean')
 stacked = df.set_index('group').stack().reset_index()
 
-# 7. Join işlemleri (inner)
 df2 = df[['NEW_COL_0', 'group']].copy()
 df2['dummy'] = np.random.randint(0, 100, size=len(df2))
 merged = pd.merge(df, df2, on='group', how='inner')
 
-# 8. Çoklu apply işlemi
 for i in range(3):
     merged[f'applied_{i}'] = np.where(merged['dummy'] % 2 == 0, merged['dummy'] * (i + 1), merged['dummy'] + i)
 
-# 9. Karmaşık fonksiyon uygulama
+
 def complex_function(x):
     try:
         return np.log1p(np.sqrt(np.abs(np.sin(x) + np.cos(x**2) - np.tan(x / 3.14)))) * np.e
@@ -57,17 +45,10 @@ def complex_function(x):
 
 merged['complex'] = merged['NEW_COL_1'].apply(complex_function)
 
-# 10. Dosya kaydetme
 output_path = "/mnt/data/final_useless_output.csv"
 merged.to_csv(output_path, index=False)
 
 output_path
-
-# Ortam sıfırlandığı için gerekli kütüphaneleri tekrar yükleyip kodu yeniden çalıştırıyorum
-import pandas as pd
-import numpy as np
-
-# 1. Daha küçük veri seti üret
 np.random.seed(42)
 rows = 2000
 cols = 10
@@ -75,7 +56,7 @@ data = np.random.rand(rows, cols)
 columns = ['A_' + str(i) for i in range(cols)]
 df = pd.DataFrame(data, columns=columns)
 
-# 2. Her kolona saçma işlemler zinciri uygula
+
 for col in df.columns:
     df[col] = np.where(df[col] > 0.5, df[col] * np.pi / 3.14 * 3.14159, df[col])
     df[col] = np.where(df[col] < 1, np.sin(df[col]) + np.cos(df[col]) - np.tan(df[col]), df[col])
@@ -83,48 +64,48 @@ for col in df.columns:
     df[col] = df[col] + df[col].rolling(window=5, min_periods=1).mean()
     df[col] = df[col].fillna(df[col].mean())
 
-# 3. Yeni kolonları daha hızlı türet
+
 row_sum = df.sum(axis=1)
 row_mean = df.mean(axis=1)
 row_std = df.std(axis=1).replace(0, 1e-6)
 
-for i in range(3):  # Daha az kolon
+for i in range(3): 
     df[f'NEW_COL_{i}'] = row_sum * row_mean / row_std
 
-# 4. Kümülatif fonksiyonlar
+
 df['cumsum_total'] = row_sum.cumsum()
 df['cumprod_total'] = row_sum.cumprod()
 df['expanding_mean'] = row_sum.expanding().mean()
 df['rolling_sum'] = row_sum.rolling(window=50, min_periods=1).sum()
 
-# 5. Gruplama işlemleri
+
 df['group'] = np.random.choice(['A', 'B', 'C', 'D'], size=len(df))
 grouped = df.groupby('group').agg(['mean', 'std', 'min', 'max', 'median'])
-
-# 6. Pivot ve stack işlemleri
 pivoted = df.pivot_table(index='group', values='NEW_COL_0', aggfunc='mean')
 stacked = df.set_index('group').stack().reset_index()
 
-# 7. Join işlemleri (inner)
+
 df2 = df[['NEW_COL_0', 'group']].copy()
 df2['dummy'] = np.random.randint(0, 100, size=len(df2))
 merged = pd.merge(df, df2, on='group', how='inner')
 
-# 8. Çoklu apply işlemi
+
 for i in range(3):
     merged[f'applied_{i}'] = np.where(merged['dummy'] % 2 == 0, merged['dummy'] * (i + 1), merged['dummy'] + i)
 
-# 9. Karmaşık fonksiyon uygulama
+
 def complex_function(x):
     try:
         return np.log1p(np.sqrt(np.abs(np.sin(x) + np.cos(x**2) - np.tan(x / 3.14)))) * np.e
     except:
         return np.nan
-
 merged['complex'] = merged['NEW_COL_1'].apply(complex_function)
 
-# 10. Dosya kaydetme
+
 output_path = "/mnt/data/final_useless_output.csv"
 merged.to_csv(output_path, index=False)
 
 output_path
+
+
+#Şunu refactor et dalağını sikerim senin dalagını sikerim
