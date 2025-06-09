@@ -292,15 +292,61 @@ class Cli_side():
                     print(Fore.LIGHTBLACK_EX,'\nSayım Türü: HEPSİNİ SAY\nSayım sonucu: BASARİLİ\n\nSayım tamamlandı sonuçları inceleyebilirsiniz..')                
 
                 finally:
+                    quest_action_second_input_3 = input('\n\n1-PROGRAMI KAPAT\n2-İŞLEMİN BAŞINA DÖN\n3-PROGRAMIN BAŞINA DÖN\n\n>>> ')
+                    
                     if int(device_info) == 0:
-                        quest_action_main_input = input('\n\n1-PROGRAMI KAPAT\n2-İŞLEMİN BAŞINA DÖN\n3-PROGRAMIN BAŞINA DÖN\n\n>>> ')
-
                         _o.system('cls')
 
                     elif int(device_info) == 1:
-                        quest_action_second_input = input('\n\n1-PROGRAMI KAPAT\n2-İŞLEMİN BAŞINA DÖN\n3-PROGRAMIN BAŞINA DÖN\n\n>>> ')
-   
-                        _o.system('clear')
+
+                        if str(quest_action_second_input_3).isdigit():
+                            if int(quest_action_second_input_3) == 1:
+                                _s.exit()
+                                _o.system('clear')
+
+                            try:
+                                if int(device_info) == 1:     
+
+                                    _o.system('cls')
+                                    quest_year()
+
+                                elif int(device_info) == 2:
+        
+                                    _o.system('clear')
+                                    quest_year()
+                                    
+                            except:
+                                pass
+
+                            if int(quest_action_second_input_3) == 2:
+                                try:
+                                    if int(device_info) == 1:     
+
+                                        _o.system('cls')
+                                        quest_year()
+
+                                    elif int(device_info) == 2:
+                
+                                        _o.system('clear')
+                                        quest_year()
+                                except:
+                                    pass
+
+                            if int(quest_action_second_input_3) == 3:
+                                try:
+                                    if int(device_info) == 1:     
+
+                                        _o.system('cls')
+                                        quest_year()
+
+                                    elif int(device_info) == 2:
+                
+                                        _o.system('clear')
+                                        quest_year()
+                                except:
+                                    pass
+            
+                        
 
             else:
                 for data_indexes in range(len(data_frame.values)):
@@ -327,12 +373,12 @@ class Cli_side():
                     print(Fore.LIGHTBLACK_EX,'\nSayım Türü: BELİRLİ YILIN SAYILARINI SAY\nSayım sonucu: BASARİLİ\n\nSayım tamamlandı sonuçları inceleyebilirsiniz..') 
 
                 finally:
+                    quest_action_second_input_4 = input('\n\n1-PROGRAMI KAPAT\n2-İŞLEMİN BAŞINA DÖN\n3-PROGRAMIN BAŞINA DÖN\n\n>>> ')
+
                     if int(device_info) == 0:
-                        quest_action_main_input_3 = input('\n\n1-PROGRAMI KAPAT\n2-İŞLEMİN BAŞINA DÖN\n3-PROGRAMIN BAŞINA DÖN\n\n>>> ')
                         _o.system('cls')
 
                     elif int(device_info) == 1:
-                        quest_action_second_input_4 = input('\n\n1-PROGRAMI KAPAT\n2-İŞLEMİN BAŞINA DÖN\n3-PROGRAMIN BAŞINA DÖN\n\n>>> ')
 
                         if str(quest_action_second_input_4).isdigit():
                             if int(quest_action_second_input_4) == 1:
