@@ -43,9 +43,6 @@ def quest_device():
 device_info = quest_device()
 
 
-
-
-
 data_frame = pd.read_csv(r"C:\Users\alper\Desktop\Top secret game\sayisalloto.csv")
 
 class data_struct():
@@ -163,12 +160,12 @@ class Choose():
         	
         Cli_side()
         try:
-
             return int(choose_input)   
             
         except:
             _o.system('cls')
             Choose.choose_function()
+            
 
 class Cli_side():
     def __init__(self):
@@ -212,235 +209,252 @@ class Cli_side():
                         Choose.choose_function()
         
         elif self.user_choose == 2:
-            def quest_year():
-                year_input = input('Hangi yıla ait sayı analizi istersiniz??\n\n>> ')
+            class quest_class:
+                def quest_year():
+                    year_input = input('Hangi yıla ait sayı analizi istersiniz??\n\n>> ')
 
-                return_index = 0
+                    return_index = 0
 
-                if year_input == '' or  year_input == ' ':
+                    if year_input == '' or  year_input == ' ':
+                        if int(device_info) == 0:
+                            _o.system('cls')
+                            return year_input
+                        
+                        elif int(device_info) == 1:
+                            _o.system('clear')
+                            return year_input
+                    
+                        else:
+                            return_index = 0
+
+                    try:
+                        f = float(year_input)
+
+                        if f.is_integer():
+                            return_index = 1
+
+                        else:
+                            pass
+
+                    except:
+                        return False
+                    
+                    finally:
+                        if return_index == 0:
+                            return False
+                        
+                        elif return_index == 1:
+                            return int(year_input)
+
+            def quest_all():
+                year = quest_class.quest_year()
+                
+                
+                real_count_data = []
+                value_data = []
+
+                value_count_data = []
+                val_dat = []
+
+                third_value_count_data_arr = []
+                third_value_data_arr = []
+
+                if year == False:
+
                     if int(device_info) == 0:
                         _o.system('cls')
-                        return year_input
+                        quest_class.quest_year()
                     
                     elif int(device_info) == 1:
                         _o.system('clear')
-                        return year_input
+                        quest_class.quest_year()
+
                 
-                    else:
-                        return_index = 0
+                elif year == 101:
+                    for data_indexes in range(len(data_frame.values)):
+                        value_data.append(data_frame.values[data_indexes][2:7])                    
 
-                try:
-                    f = float(year_input)
-
-                    if f.is_integer():
-                        return_index = 1
-
-                    else:
-                        pass
-
-                except:
-                    return False
-                
-                finally:
-                    if return_index == 0:
-                        return False
-                    
-                    elif return_index == 1:
-                        return int(year_input)
-
-            year = quest_year()
-            
-            
-            real_count_data = []
-            value_data = []
-
-            value_count_data = []
-            val_dat = []
-
-            if year == False:
-
-                if int(device_info) == 0:
-                    _o.system('cls')
-                    quest_year()
-                
-                elif int(device_info) == 1:
-                    _o.system('clear')
-                    quest_year()
-
-            
-            elif year == 101:
-                for data_indexes in range(len(data_frame.values)):
-                    value_data.append(data_frame.values[data_indexes][2:7])                    
-
-                for matris_length in range(len(value_data)):
-                    for vals in range(len(value_data[matris_length])):       
-                        value_count_data.append(value_data[matris_length])
-                    
-
-                for x in range(len(value_count_data)):
-                    for meta_value in range(len(value_count_data[x])):
-                        real_count_data.append(value_count_data[x][meta_value])
-                
-                for valcoin in range(len(value_data)):
-                    for valco in range(len(value_data[valcoin])):
-                        val_dat.append(value_data[valcoin][valco])
-                try:
-                    for count_data in range(len(val_dat)):
-                        print(f'Sayı:{val_dat[count_data]}  Kaç defa geçti: {val_dat.count(val_dat[count_data])}')
-
-                except:
-                    print(Fore.LIGHTBLACK_EX,'\nSayım Türü: HEPSİNİ SAY\nSayım sonucu: BASARİLİ\n\nSayım tamamlandı sonuçları inceleyebilirsiniz..')                
-
-                finally:
-                    quest_action_second_input_3 = input('\n\n1-PROGRAMI KAPAT\n2-İŞLEMİN BAŞINA DÖN\n3-PROGRAMIN BAŞINA DÖN\n\n>>> ')
-                    
-                    if int(device_info) == 0:
-                        _o.system('cls')
-
-                    elif int(device_info) == 1:
-
-                        if str(quest_action_second_input_3).isdigit():
-                            if int(quest_action_second_input_3) == 1:
-                                _s.exit()
-                                _o.system('clear')
-
-                            try:
-                                if int(device_info) == 1:     
-
-                                    _o.system('cls')
-                                    quest_year()
-
-                                elif int(device_info) == 2:
-        
-                                    _o.system('clear')
-                                    quest_year()
-                                    
-                            except:
-                                pass
-
-                            if int(quest_action_second_input_3) == 2:
-                                try:
-                                    if int(device_info) == 1:     
-
-                                        _o.system('cls')
-                                        quest_year()
-
-                                    elif int(device_info) == 2:
-                
-                                        _o.system('clear')
-                                        quest_year()
-                                except:
-                                    pass
-
-                            if int(quest_action_second_input_3) == 3:
-                                try:
-                                    if int(device_info) == 1:     
-
-                                        _o.system('cls')
-                                        quest_year()
-
-                                    elif int(device_info) == 2:
-                
-                                        _o.system('clear')
-                                        quest_year()
-                                except:
-                                    pass
-            
+                    for matris_length in range(len(value_data)):
+                        for vals in range(len(value_data[matris_length])):       
+                            value_count_data.append(value_data[matris_length])
                         
 
-            else:
-                for data_indexes in range(len(data_frame.values)):
-                    if str(data_frame.values[data_indexes][0]).startswith(str(year)):
-                        value_data.append(data_frame.values[data_indexes][2:7])
-                
-                for matris_length in range(len(value_data)):
-                    for vals in range(len(value_data[matris_length])):       
-                        value_count_data.append(value_data[matris_length])
+                    for x in range(len(value_count_data)):
+                        for meta_value in range(len(value_count_data[x])):
+                            real_count_data.append(value_count_data[x][meta_value])
                     
+                    for valcoin in range(len(value_data)):
+                        for valco in range(len(value_data[valcoin])):
+                            val_dat.append(value_data[valcoin][valco])
+                    try:
+                        maximum_input = input(f'kaçıncı kolona kadar en fazla çıkan sayıları bulmak istersiniz??\n\n0 ile {len(data_frame.values)} arasında\n\n$>> ')
 
-                for x in range(len(value_count_data)):
-                    for meta_value in range(len(value_count_data[x])):
-                        real_count_data.append(value_count_data[x][meta_value])
-                
-                for valcoin in range(len(value_data)):
-                    for valco in range(len(value_data[valcoin])):
-                        val_dat.append(value_data[valcoin][valco])
-                try:
-                    for count_data in range(len(val_dat)):
-                        print(f'Sayı:{val_dat[count_data]}  Kaç defa geçti: {val_dat.count(val_dat[count_data])}')
+                        for count_data in range(len(val_dat)):
+                            print(f'Sayı:{val_dat[count_data]}  Kaç defa geçti: {val_dat.count(val_dat[count_data])}')
 
-                except:
-                    print(Fore.LIGHTBLACK_EX,'\nSayım Türü: BELİRLİ YILIN SAYILARINI SAY\nSayım sonucu: BASARİLİ\n\nSayım tamamlandı sonuçları inceleyebilirsiniz..') 
+                        val_dat_copy = val_dat.copy()
+                        print('\n\nEn Fazla çıkan sayılar kısmı\n\n')
 
-                finally:
-                    quest_action_second_input_4 = input('\n\n1-PROGRAMI KAPAT\n2-İŞLEMİN BAŞINA DÖN\n3-PROGRAMIN BAŞINA DÖN\n\n>>> ')
+                        for lens in range(int(maximum_input)):    
+                            third_value_data_arr.append(val_dat_copy[lens])
+                            third_value_count_data_arr.append(val_dat_copy.count((val_dat_copy[lens])))
 
-                    if int(device_info) == 0:
-                        _o.system('cls')
+                        for main_count_vals in zip(third_value_data_arr,third_value_count_data_arr):
+                            print(f'sayı & kaç kere geçti: {main_count_vals}')
 
-                    elif int(device_info) == 1:
+
+                    except:
+                        print(Fore.LIGHTBLACK_EX,'\nSayım Türü: HEPSİNİ SAY\nSayım sonucu: BASARİSİZ\n\nSayım tamamlanırken bir hata oluştu...')                
+
+                    finally:
+                        quest_action_second_input_3 = input('\n\n1-PROGRAMI KAPAT\n2-İŞLEMİN BAŞINA DÖN\n3-PROGRAMIN BAŞINA DÖN\n\n>>> ')
+
+                        if str(quest_action_second_input_3).isdigit():
+                                if int(quest_action_second_input_3) == 1:
+                                    try:
+                                        if int(device_info) == 0:
+                                            _s.exit()
+                                            _o.system('cls')
+                                        
+                                        elif int(device_info) == 1:
+                                            _s.exit()
+                                            _o.system('clear')          
+
+                                    except:
+                                        x1 = 0
+
+                                if int(quest_action_second_input_3) == 2:
+                                    try:
+                                        if int(device_info) == 0:     
+                                            _o.system('cls')
+                                            quest_all()
+
+                                        elif int(device_info) == 1:               
+                                            _o.system('clear')
+                                            quest_all()
+                                    except:
+                                        x2 = 1
+
+                                if int(quest_action_second_input_3) == 3:
+                                    try:
+                                        if int(device_info) == 0:     
+                                            _o.system('cls')
+                                            Choose.choose_function()
+
+                                        elif int(device_info) == 1:
+                                            _o.system('clear')
+                                            Choose.choose_function()
+                                    except:
+                                        x2 = 2                  
+
+                else:
+                    third_value_data_arr_2 = []
+                    third_value_count_data_arr_2 = []
+
+                    for data_indexes in range(len(data_frame.values)):
+                        if str(data_frame.values[data_indexes][0]).startswith(str(year)):
+                            value_data.append(data_frame.values[data_indexes][2:7])
+                    
+                    for matris_length in range(len(value_data)):
+                        for vals in range(len(value_data[matris_length])):       
+                            value_count_data.append(value_data[matris_length])
+                        
+
+                    for x in range(len(value_count_data)):
+                        for meta_value in range(len(value_count_data[x])):
+                            real_count_data.append(value_count_data[x][meta_value])
+                    
+                    for valcoin in range(len(value_data)):
+                        for valco in range(len(value_data[valcoin])):
+                            val_dat.append(value_data[valcoin][valco])
+
+                    maximum_input_2 = input(f'kaçıncı kolona kadar en fazla çıkan sayıları bulmak istersiniz??\n\n0 ile {len(data_frame.values)} arasında\n\n$>> ')
+                            
+                    try:
+                        for count_data in range(len(val_dat)):
+                            print(f'Sayı:{val_dat[count_data]}  Kaç defa geçti: {val_dat.count(val_dat[count_data])}')
+
+                        val_dat_copy_2 = val_dat.copy()
+                        print('\n\nEn Fazla çıkan sayılar kısmı\n\n')
+
+                        for lens_2 in range(int(maximum_input_2)):    
+                            third_value_data_arr_2.append(val_dat_copy_2[lens_2])
+                            third_value_count_data_arr_2.append(val_dat_copy_2.count((val_dat_copy_2[lens_2])))
+
+                        for main_count_vals_2 in zip(third_value_data_arr_2,third_value_count_data_arr_2):
+                            print(f'sayı & kaç kere geçti: {main_count_vals_2}')
+
+                    except:
+                        print(Fore.LIGHTBLACK_EX,'\nSayım Türü: BELİRLİ YILIN SAYILARINI SAY\nSayım sonucu: BASARİLİ\n\nSayım tamamlandı sonuçları inceleyebilirsiniz..') 
+
+                    finally:
+                        third_value_data_arr_2.clear()
+                        third_value_count_data_arr_2.clear()
+                        
+                        quest_action_second_input_4 = input('\n\n1-PROGRAMI KAPAT\n2-İŞLEMİN BAŞINA DÖN\n3-PROGRAMIN BAŞINA DÖN\n\n>>> ')
+
+                        if int(device_info) == 0:
+                            _o.system('cls')
 
                         if str(quest_action_second_input_4).isdigit():
-                            if int(quest_action_second_input_4) == 1:
-                                _s.exit()
-                                _o.system('clear')
+                                if int(quest_action_second_input_4) == 1:
+                                    try:
+                                        if int(device_info) == 0:     
 
-                            try:
-                                if int(device_info) == 1:     
+                                            _o.system('cls')
+                                            _s.exit()
 
-                                    _o.system('cls')
-                                    quest_year()
-
-                                elif int(device_info) == 2:
-        
-                                    _o.system('clear')
-                                    quest_year()
-                                    
-                            except:
-                                pass
-
-                            if int(quest_action_second_input_4) == 2:
-                                try:
-                                    if int(device_info) == 1:     
-
-                                        _o.system('cls')
-                                        quest_year()
-
-                                    elif int(device_info) == 2:
+                                        elif int(device_info) == 1:
                 
-                                        _o.system('clear')
-                                        quest_year()
-                                except:
-                                    pass
+                                            _o.system('clear')
+                                            _s.exit()
+                                            
+                                    except:
+                                        pass
 
-                            if int(quest_action_second_input_4) == 3:
-                                try:
-                                    if int(device_info) == 1:     
+                                if int(quest_action_second_input_4) == 2:
+                                    try:
+                                        if int(device_info) == 0:     
 
-                                        _o.system('cls')
-                                        quest_year()
+                                            _o.system('cls')
+                                            quest_all()
 
-                                    elif int(device_info) == 2:
+                                        elif int(device_info) == 1:
+                    
+                                            _o.system('clear')
+                                            quest_all()
+                                    except:
+                                        pass
+
+                                if int(quest_action_second_input_4) == 3:
+                                    try:
+                                        if int(device_info) == 0:     
+
+                                            _o.system('cls')
+                                            Choose.choose_function()
+
+                                        elif int(device_info) == 1:
+                    
+                                            _o.system('clear')
+                                            Choose.choose_function()
+                                    except:
+                                        pass
                 
-                                        _o.system('clear')
-                                        quest_year()
-                                except:
-                                    pass
-
         elif self.user_choose == 3:
             print('3')
 
         elif self.user_choose == 4:
             print('4')
-        
+            
         elif self.user_choose == 5:
             print('5')
 
         elif self.user_choose == 6:
             print('6')
 
+        try:
+            quest_all()
 
+        except:
+            pass
 Choose.choose_function()
-        
-    
-    
