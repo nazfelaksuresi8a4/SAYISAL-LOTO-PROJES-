@@ -172,7 +172,6 @@ class Choose():
 
 class Cli_side():
     def __init__(self):
-        #ALTTAKİ OROSPUNUN EVLADI VARYA O SONUNDA .pop OLAN CİBİLİYETİNE KAYDIĞIM HEH İŞTE ONU DÜZELTECEN PATLICAN KAFALI BİR KULLANICI ÇIKIP SİSTEM İNPUTUNU BOŞ VERİRSE KOD PATLIYOR AMK
 
         self.user_choose = choose_data.pop()
 
@@ -286,8 +285,8 @@ class Cli_side():
                     for valco in range(len(value_data[valcoin])):
                         val_dat.append(value_data[valcoin][valco])
                 try:
-                    for count_data in range(len(real_count_data)):
-                        print(f'Sayı:{val_dat[count_data]}  Kaç defa geçti: {real_count_data[count_data]}')
+                    for count_data in range(len(val_dat)):
+                        print(f'Sayı:{val_dat[count_data]}  Kaç defa geçti: {val_dat.count(val_dat[count_data])}')
 
                 except:
                     print(Fore.LIGHTBLACK_EX,'\nSayım Türü: HEPSİNİ SAY\nSayım sonucu: BASARİLİ\n\nSayım tamamlandı sonuçları inceleyebilirsiniz..')                
@@ -321,8 +320,8 @@ class Cli_side():
                     for valco in range(len(value_data[valcoin])):
                         val_dat.append(value_data[valcoin][valco])
                 try:
-                    for count_data in range(len(real_count_data)):
-                        print(f'Sayı:{val_dat[count_data]}  Kaç defa geçti: {real_count_data[count_data]}')
+                    for count_data in range(len(val_dat)):
+                        print(f'Sayı:{val_dat[count_data]}  Kaç defa geçti: {val_dat.count(val_dat[count_data])}')
 
                 except:
                     print(Fore.LIGHTBLACK_EX,'\nSayım Türü: BELİRLİ YILIN SAYILARINI SAY\nSayım sonucu: BASARİLİ\n\nSayım tamamlandı sonuçları inceleyebilirsiniz..') 
@@ -330,7 +329,6 @@ class Cli_side():
                 finally:
                     if int(device_info) == 0:
                         quest_action_main_input_3 = input('\n\n1-PROGRAMI KAPAT\n2-İŞLEMİN BAŞINA DÖN\n3-PROGRAMIN BAŞINA DÖN\n\n>>> ')
-
                         _o.system('cls')
 
                     elif int(device_info) == 1:
