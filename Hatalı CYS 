@@ -1,0 +1,43 @@
+import os as _o
+import sys as _s
+
+#Ana yönlendirme sistemi
+#YOK
+
+#kodda 4. seçim 
+#B*K GİBİ AMK
+class data_struct:
+    def all_datas():                
+        def sor():
+            sor = input("ne yap>> ")
+        
+            return sor
+        
+        sor_async = sor()
+        
+        if sor_async == "1":
+            _o.system("clear")
+            data_struct.all_datas()
+        
+        elif sor_async == "2":
+            _s.exit()
+            x = input("sorgu:\n\n>>")
+        try: 
+            if x == "101":
+                print(x)
+            else:
+                print(x)    
+        except:
+            pass
+        finally:
+            #son olarak ana yonlendirme sistemine kullanıcıyı yonlendir#
+            sor()      
+           
+data_struct.all_datas()  
+
+#İste sayısal loto projesindeki yönlendirme sistemi bu bojlukta olduğu için 1. de sorup 2. de nanay oluyor
+#e tabi haliyle bende bı çözüm gelstirdim
+#bu hem modüler hem doby repeat your self prensibine uygun
+#he bu arada bunun iy olanını iznanda yazdım
+#otobustede projemdeki hatalı kisma benzer mantıkkurup 
+#bursa yine yazdım
