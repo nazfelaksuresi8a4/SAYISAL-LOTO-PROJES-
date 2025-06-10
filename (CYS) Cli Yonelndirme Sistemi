@@ -1,0 +1,30 @@
+import os as _o
+import sys as _s
+
+#Ana yönlendirme sistemi
+def sor():
+    sor = input("ne yap>> ")
+    
+    if sor == "1":
+        _o.system("clear")
+        data_struct.all_datas()
+        
+    elif sor == "2":
+        _s.exit()
+
+#kodda 4. seçim 
+class data_struct:
+    def all_datas():                   
+        x = input("sorgu:\n\n>>")
+        try: 
+            if x == "101":
+                print(x)
+            else:
+                print(x)    
+        except:
+            pass
+        finally:
+            #son olarak ana yonlendirme sistemine kullanıcıyı yonlendir#
+            sor()      
+           
+data_struct.all_datas()         
