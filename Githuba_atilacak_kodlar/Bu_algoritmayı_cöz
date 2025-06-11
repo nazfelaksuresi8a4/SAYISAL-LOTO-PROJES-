@@ -1,0 +1,12 @@
+matris = [[9, 8, 4, 12, 6, 1], [6, 1, 6, 7, 1, 5]]
+
+# Kullanıcıdan kaç tane sayı önerisi isteniyor
+x = int(input('Kaç tane sayı önerisi istersiniz?\n\n>> '))
+
+# Tüm değerleri bir araya getir
+all_values = [val for row in matris for val in row]
+
+# En büyük x değeri kadar sayıyı seç
+real_array = sorted(all_values, reverse=True)[:x]
+
+print(real_array)
