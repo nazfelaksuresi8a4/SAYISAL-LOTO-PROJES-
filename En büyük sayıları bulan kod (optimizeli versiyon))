@@ -1,0 +1,9 @@
+matris = [[1,2,3,4,5],[6,7,8,9,10]]
+
+x = input('Kaç tane analiz istersiniz: ')
+
+all_values = [rows for rows in matris for rows in rows]
+
+max_values = sorted(all_values, reverse=True)
+
+print(max_values[:int(x)])
