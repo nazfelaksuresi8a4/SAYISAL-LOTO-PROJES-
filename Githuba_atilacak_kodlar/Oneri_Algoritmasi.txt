@@ -1,0 +1,28 @@
+matris = [[9,8,4,12,6,1],
+          [6,1,6,7,1,5]]
+
+copied_matris = matris.copy()
+
+best_values_array = []
+real_array = []
+
+x = input('kaç tane sayı önerisi istersiniz?\n\n>> ')
+
+for index_ranges in range(len(matris)):
+    for data_ranges in range(len(matris[index_ranges])):
+
+        best_values_array.append(copied_matris[index_ranges][data_ranges])
+
+for data_rangers in range(len(best_values_array)):
+    if data_rangers >= int(x):
+        break
+
+    index = best_values_array.index(max(best_values_array))
+
+    real_array.append(best_values_array[index])
+
+    best_values_array.remove(best_values_array[index])
+
+
+
+print(real_array)
