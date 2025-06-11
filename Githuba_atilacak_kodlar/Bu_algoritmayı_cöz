@@ -1,3 +1,6 @@
+#yani for döngüsü bi iterator kadar tekrarlar ama iki tane aynı eleman gelirse iteratore bunları tek olarak kabul edip iteratorö tekrarlamak yerine işlemi tek kez ypar
+
+
 matris = [[9, 8, 4, 12, 6, 1], [6, 1, 6, 7, 1, 5]]
 
 # Kullanıcıdan kaç tane sayı önerisi isteniyor
