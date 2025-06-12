@@ -45,7 +45,15 @@ device_info = quest_device()
 
 data_frame = pd.read_csv(r"C:\Users\alper\Desktop\Top secret game\sayisalloto.csv")
 
-class data_struct():
+class all_year_datas:
+    def all_year_data():
+        for vals in data_frame.values:
+            print(vals) 
+        print(Fore.RESET)
+
+        #data_struct.all_datas()
+
+class data_struct:
     def all_datas():
         
         year_arr.clear()
@@ -54,7 +62,52 @@ class data_struct():
 
         choose_option = input("\n\nHangi yilin verilerini istersiniz?\n\n>> ") 
 
+        if int(choose_option) == 101:
+            all_year_datas.all_year_data()
+            
+            input('Devam etmek için [ENTER]')
+            
+
+        else:
+            print('pass')
+
+        def recursive_stat():
+                        action_choose = int(input('\n\n1-ÇIK\n2-BAŞA DÖN\n3-TEKRAR BAŞLAT\n\n$>> '))
+
+                        if(action_choose == 1):
+                            try:
+                                if int(device_info) == 0:
+                                    _o.system('cls')
+                            except:
+                                if int(device_info) == 1:
+                                    _o.system('clear')
+                            finally:
+                                _s.exit()
+
+                        elif(action_choose == 2):
+                            try:
+                                if int(device_info) == 0:
+                                    _o.system('cls')
+                            except:
+                                if int(device_info) == 1:
+                                    _o.system('clear')
+                            finally:
+                                data_struct.all_datas()
+
+                        elif(action_choose == 3):
+                            try:
+                                if int(device_info) == 0:
+                                    _o.system('cls')
+                            except:
+                                if int(device_info) == 1:
+                                    _o.system('clear')
+                            finally:
+                                Choose.choose_function()
+
         def recursive():
+            if int(choose_option) == 101:
+                recursive_stat()
+
             if choose_option.startswith(' ') or choose_option == ' ' or choose_option == '':
 
                 try:
@@ -64,7 +117,7 @@ class data_struct():
                         _o.system('cls')
                         new_struct_win = data_struct.all_datas()
 
-                        print(new_struct_win)
+                        #print(new_struct_win)
                 
                 except:
                     if int(device_info) == 1:
@@ -75,71 +128,38 @@ class data_struct():
 
                         print(new_struct_unix)
 
-                finally:
+        def main_algorithm_object():
 
-                    action_choose = int(input('\n\n1-ÇIK\n2-BAŞA DÖN\n3-TEKRAR BAŞLAT\n\n$>> '))
+            for data_index in range(len(data_frame.values)):
 
-                    if(action_choose == 1):
-                        try:
-                            if int(device_info) == 0:
-                                _o.system('cls')
-                        except:
-                            if int(device_info) == 1:
-                                _o.system('clear')
-                        finally:
-                            _s.exit()
-
-                    elif(action_choose == 2):
-                        try:
-                            if int(device_info) == 0:
-                                _o.system('cls')
-                        except:
-                            if int(device_info) == 1:
-                                _o.system('clear')
-                        finally:
-                            data_struct.all_datas()
-                    elif(action_choose == 3):
-                        try:
-                            if int(device_info) == 0:
-                                _o.system('cls')
-                        except:
-                            if int(device_info) == 1:
-                                _o.system('clear')
-                        finally:
-                            Choose.choose_function()
-
-        if choose_option.startswith(' ') or choose_option == ' ' or choose_option == '':
-
-            recursive()
-
-            return 0
-
-        for data_index in range(len(data_frame.values)):
-
-            if str(data_frame.values[data_index][0]).startswith(choose_option):
-                year_arr.append(data_frame.values[data_index])
-                    
-        try:		
-            print(Fore.RESET,Style.RESET_ALL)
-
-            return(pd.DataFrame(data=year_arr,columns=(columns[f] for f in range(len(data_frame.columns)))))
-                    #nonerror hashhes#
-        except Exception as maths_except:
-            print(f"bir hata olustu\n\nHATA: {maths_except}")
-            print(Fore.RESET,Style.RESET_ALL)
-        try:
-            if int(device_info) == 0:
-                _o.system("clear")
-                data_struct.all_datas()
+                if str(data_frame.values[data_index][0]).startswith(str(choose_option)):
+                    year_arr.append(data_frame.values[data_index])
+                        
+            try:		
                 print(Fore.RESET,Style.RESET_ALL)
 
-        except:
-            if int(device_info) == 1:
-                _o.system("cls")
-                data_struct.all_datas()	
-                print(Fore.RESET,Style.RESET_ALL)	
+                print(pd.DataFrame(data=year_arr,columns=(columns[f] for f in range(len(data_frame.columns)))))
+                        #nonerror hashhes#
+                input('Devam etmek için [ENTER]')
 
-         
+            except Exception as maths_except:
+                print(f"bir hata olustu\n\nHATA: {maths_except}")
+                print(Fore.RESET,Style.RESET_ALL)
+            try:
+                if int(device_info) == 0:
+                    _o.system("clear")
+                    recursive_stat()
+                    print(Fore.RESET,Style.RESET_ALL)
+
+            except:
+                if int(device_info) == 1:
+                    _o.system("cls")
+                    recursive_stat()	
+                    print(Fore.RESET,Style.RESET_ALL)	
+
+
+        main_algorithm_object()
+
 class Choose():
     def choose_function():
         colorama.init() 
@@ -177,8 +197,9 @@ class Cli_side():
         if self.user_choose == 1:
             try:
                 print(data_struct.all_datas())	
-            except:
+            except: 
                 pass
+
             finally:
                 action_choose_zero = int(input('\n\n1-ÇIK\n2-BAŞA DÖN\n3-TEKRAR BAŞLAT\n\n$>> '))
 
@@ -188,12 +209,13 @@ class Cli_side():
                     if int(device_info) == 1:   
                         _o.system('clear') 
 
-
                 if(action_choose_zero == 2):
                     if int(device_info) == 0:
                         _o.system('cls')
+                        data_struct.all_datas()
                     if int(device_info) == 1:
                         _o.system('clear')
+                        data_struct.all_datas()
 
                 if(action_choose_zero == 3):
                     try:
@@ -206,7 +228,7 @@ class Cli_side():
                         pass ##empty##
 
                     finally:
-                        Choose.choose_function()
+                        print('MERHABAAA')
         
         elif self.user_choose == 2:
             class quest_class:
@@ -441,6 +463,7 @@ class Cli_side():
                                         pass
                 
         elif self.user_choose == 3:
+            #ONERİ_ALGORİTMASİ#
             print('3')
 
         elif self.user_choose == 4:
