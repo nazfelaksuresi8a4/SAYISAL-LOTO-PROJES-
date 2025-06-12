@@ -17,6 +17,29 @@ columns = ["tarih:","no:","S1","S2","S3","S4","S5","S6","  durum:"]
 
 #b-g#
 
+def select_option():
+    action_choose = int(input('\n\n1-ÇIK\n2-TEKRAR BAŞLAT\n\n$>> '))
+
+    if(action_choose == 1):
+        try:
+            if int(device_info) == 0:
+                _o.system('cls')
+        except:
+            if int(device_info) == 1:
+                _o.system('clear')
+        finally:
+                _s.exit()
+
+    if(action_choose == 2):
+        try:
+            if int(device_info) == 0:
+                _o.system('cls')
+        except:
+                if int(device_info) == 1:
+                    _o.system('clear')
+        finally:
+                Choose.choose_function()
+
 def quest_device():
     change_os = input('Cihazınızı seçin:\n\n0-Pc\n1-Mobil\n\n$> ')
 
@@ -463,9 +486,75 @@ class Cli_side():
                                         pass
                 
         elif self.user_choose == 3:
-            #ONERİ_ALGORİTMASİ#
-            print('3')
+            meta_data_array = []
 
+            for metadata_vals in data_frame.values:
+                vals = metadata_vals[2:7]
+                for val in vals:
+                    meta_data_array.append(val) 
+
+            def merge_sort(metadata_arr):
+                if len(metadata_arr) <= 1:
+                    return metadata_arr
+            
+                middle = len(metadata_arr) // 2
+
+                left = merge_sort(metadata_arr[:middle])
+                right = merge_sort(metadata_arr[middle:])
+
+                return merge_function(left, right)
+            
+            def merge_function(*args):
+                metadata_results = []
+                i = j = 0
+
+                while i < len(args[0]) and j < len(args[1]):
+                    if args[0][i] < args[1][j]:
+                        metadata_results.append(args[0][i])
+                        i += 1
+                    
+                    else:
+                        metadata_results.append(args[1][j])
+                        j += 1
+                    
+                metadata_results.extend(args[0][i:])
+                metadata_results.extend(args[1][j:])
+
+                return metadata_results
+            try:
+            
+                h = []
+                f = []
+
+                merge_sort_results = merge_sort(meta_data_array)
+
+                x = input('Kaç tane tahmin istersiniz?\n\n>> ')
+
+                if x.isdigit():
+                    str_to_int_x = int(x)
+                
+                else:
+                    print('Yanlis bir girdi verdiniz lütfen tekrar başlayın.....')
+                    _t.sleep(4)
+                    select_option()
+                    
+
+                for y in range(x):  
+                    h.append(list(set(merge_sort_results))[y])
+                    f.append(meta_data_array.count(list(set(merge_sort_results))[y]))
+
+                for x,y in zip(h,f):
+                    print(f'|| Sayı: {h} || Kaç defa gecti: {f}')
+                
+                print('\n\nAlabileceğiniz en iyi tahminler yukarıda verilmiştir....')
+
+            
+            except Exception as kernel:
+                print(kernel)
+
+            finally:
+                select_option()
+            
         elif self.user_choose == 4:
             print('4')
             
