@@ -1,0 +1,53 @@
+import random
+
+class Frekanslari_Sirala:
+    def frekanslari_sirala(array):
+
+        copied_array = array.copy()
+        
+        set_array = sorted(set(list(sorted(copied_array,reverse=True))))
+
+        counted = []
+
+        result_matris = [[],[]]
+
+        x = input('kaç tane analiz istersin??\n\n>> ') 
+
+        if x.isdigit():
+            str_to_int = int(x)
+
+        else:
+            exit(code=1)
+
+        g = 1
+
+        for numaralar in set_array:
+            g += 1
+
+            if g >= str_to_int:
+                break
+
+            counted.append(array.count(numaralar))
+
+        g = 1
+
+        for numara,frekans in zip(sorted(array,reverse=True),sorted(counted,reverse=True)):
+            g += 1
+
+            if g >= str_to_int:
+                break  
+            
+            result_matris[0].append(numara)
+            result_matris[1].append(frekans)
+        
+        return result_matris
+
+
+target_array = [random.randint(0,2400) for _ in range(2400)]
+
+return_result = Frekanslari_Sirala.frekanslari_sirala(target_array)
+
+for value,frequency in zip(sorted(return_result[0],reverse=True),sorted(return_result[1],reverse=True)):
+    print(f'sayı: {value} frekans: {frequency}')
+
+
