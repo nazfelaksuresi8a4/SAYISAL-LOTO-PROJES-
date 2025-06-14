@@ -479,7 +479,9 @@ class Cli_side():
                         str_to_int = int(x)
 
                     else:
-                        exit(code=1)
+                        print('LÜTFEN bir sayı girin....!')
+                        input()
+                        Choose.choose_function()
 
                     g = 1
 
@@ -519,12 +521,39 @@ class Cli_side():
 
             finally:
                 select_option()
-
-
             
         elif self.user_choose == 4:
-            print('4')
-            
+            try:
+                even_number_array = [] 
+                odd_number_array = []
+
+                for datas in range(len(data_frame.values)):
+                    for data in data_frame.values[datas][2:7]:
+                        if data %2 == 0: 
+                            even_number_array.append(data)
+                        
+                        else:
+                            odd_number_array.append(data)
+
+                all_numbers = len(even_number_array) + len(odd_number_array)
+
+                even_number_possibility = len(even_number_array) / all_numbers
+                odd_number_possibility = len(odd_number_array) / all_numbers
+
+                print(f'{'-'*45}\n||Çift sayı çıkma olasılığı: {even_number_possibility * 100 :.2f} ||\n{'-'*45}\n||Tek sayı çıkma olasılığı: {odd_number_possibility * 100 :.2f} ||\n{'-'*45}\n||Kaç tane tek sayı çıkmış: {len(even_number_array)}||\n{'-'*45}\n||Kaç tane tek sayı çıkmış: {len(odd_number_array)}||\n{'-'*45}')
+
+                input('\n\n\nDEVAM ETMEK İÇİN [ENTER]')
+            except Exception as number_odd_or_even_exception:
+                print(f'exception in choose-4: {number_odd_or_even_exception}')
+                even_number_array.clear()
+                odd_number_array.clear()
+
+            finally:
+                even_number_array.clear()
+                odd_number_array.clear()
+
+                select_option()
+
         elif self.user_choose == 5:
             print('5')
 
