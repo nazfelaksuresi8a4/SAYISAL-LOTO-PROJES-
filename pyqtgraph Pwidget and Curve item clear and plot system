@@ -1,0 +1,46 @@
+from PyQt5.QtCore import*
+from PyQt5.QtWidgets import*
+from PyQt5.QtGui import*
+import pyqtgraph as pg
+import sys as _s
+
+class window(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.graph = pg.PlotWidget()
+
+        self.curve = self.graph.plot([],[])
+
+        self.curve.setData([1,2,3],[3,2,1])
+
+        widget = QWidget()
+        layout = QVBoxLayout()
+
+        widget.setLayout(layout)
+
+        layout.addWidget(self.graph)
+
+        clear = QPushButton('Clear')
+        plot = QPushButton('Plot')
+
+        layout.addWidget(clear)
+        layout.addWidget(plot)
+        
+        clear.clicked.connect(self.clear)
+        plot.clicked.connect(self.plot)
+
+        self.setCentralWidget(widget)
+
+    def clear(self):
+        self.graph.clear()
+
+        self.curve = self.graph.plot([],[])
+    
+    def plot(self):
+        self.curve.setData([1,2,3,4],[4,3,2,1])
+
+if __name__=="__main__":
+    sp = QApplication([])
+    sw = window()
+    sw.show()
+    _s.exit(sp.exec_())
