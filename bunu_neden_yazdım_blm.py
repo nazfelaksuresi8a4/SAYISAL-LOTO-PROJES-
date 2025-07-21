@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 
-# 1. Daha küçük veri seti üret
 np.random.seed(42)
 rows = 2000
 cols = 10
@@ -107,5 +106,3 @@ merged.to_csv(output_path, index=False)
 
 output_path
 
-
-#Şunu refactor et dalağını sikerim senin dalagını sikerim
